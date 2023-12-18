@@ -19,6 +19,12 @@ class _SignInScreenState extends State<SignInScreen> {
   bool _isSignedIn = false;
   bool _obscurePassword = true;
 
+  // // Menambahkan variabel decryptedFullName
+  // String _decryptedFullName = '';
+
+  // Menambahkan variabel decryptedFullName
+  String _decryptedUsername = '';
+
    Future<Map<String, String>> _retrieveAndDecryptDataFromPrefs(
       SharedPreferences sharedPreferences,
       ) async {
@@ -54,6 +60,9 @@ class _SignInScreenState extends State<SignInScreen> {
           final decryptedUsername = data['username'];
           final decryptedPassword = data['password'];
           if (username == decryptedUsername && password == decryptedPassword) {
+            // Mengambil decryptedFullName dari hasil dekripsi
+            final decryptedFullName = data['fullName'];
+
             _errorText = '';
             _isSignedIn = true;
             prefs.setBool('isSignedIn', true);
@@ -63,9 +72,15 @@ class _SignInScreenState extends State<SignInScreen> {
             });
             // Sign in berhasil, navigasikan ke layar utama
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              Navigator.pushReplacementNamed(context, '/');
+              Navigator.pushReplacementNamed(context, '/',arguments: {
+                'userName': decryptedUsername,
+                'fullName': decryptedFullName,
+
+                'favoriteCandiCount': 0, // Atur nilai sesuai kebutuhan
+              });
+              print('Sign in succeeded');
             });
-            print('Sign in succeeded');
+
           } else {
             print('Username or password is incorrect');
           }
@@ -80,9 +95,6 @@ class _SignInScreenState extends State<SignInScreen> {
       print('An error occurred: $e');
     }
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {

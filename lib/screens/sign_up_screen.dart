@@ -55,15 +55,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       prefs.setString('iv', iv.base64);
 
     }
-
-    // try {
-    //   prefs.setString('fulname', name);
-    //   prefs.setString('username', username);
-    //   prefs.setString('password', password);
-    // } catch (e) {
-    //   print('Terjadi kesalahan: $e');
-    // }
-
     Navigator.pushReplacementNamed(context, '/sign_in');
   }
 

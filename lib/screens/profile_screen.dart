@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -25,19 +26,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-  void updateProfile(String newFullName, String newUserName, int newFavoriteCandiCount) {
+  // Metode untuk memperbarui tampilan profil
+  void updateProfile(String newFullName, String newUsername, int newFavoriteCandiCount) {
     setState(() {
       fullName = newFullName;
-      userName = newUserName;
+      userName = newUsername;
       favoriteCandiCount = newFavoriteCandiCount;
     });
   }
 
+  // void _onSignUpSuccess(String newUsername, String newFullName) async {
+  //   // Simpan nama pengguna di SharedPreferences
+  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   prefs.setString('username', newUsername);
+  //   prefs.setString('fullName', newFullName);
+  //
+  //   // Navigasi ke halaman profil
+  //   Navigator.pushReplacementNamed(context, '/profile');
+  // }
 
+  void navigateToSignIn() {
+    // Implementasi untuk navigasi ke halaman sign in
+    Navigator.pushNamed(context, '/sign_in');
+  }
 
+  void navigateToSignUp() {
+    // Implementasi untuk navigasi ke halaman sign up
+    Navigator.pushNamed(context, '/sign_up');
+  }
 
   @override
   Widget build(BuildContext context) {
+    // Mendapatkan data pengguna dari argument navigasi
+    final Map<String, dynamic>? args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+
+    if (args != null) {
+      fullName = args['fullName'] ?? '';
+      userName = args['userName'] ?? '';
+      favoriteCandiCount = args['favoriteCandiCount'] ?? 0;
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -91,9 +119,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 SizedBox(height: 20),
                 Divider(color: Colors.lightGreen[100]),
-                buildProfileInfo('Pengguna', Icons.lock, userName, isEditable: false, iconColor: Colors.amber),
-                buildProfileInfo('Nama', Icons.person,  fullName, isEditable: isSignedIn, iconColor: Colors.blue),
-                buildProfileInfo('Favorite', Icons.favorite, '$favoriteCandiCount', iconColor: Colors.red),
+                buildProfileInfo(
+                  'Pengguna  ',
+                  Icons.lock,
+                  userName,
+                  isEditable: false,
+                  iconColor: Colors.amber,
+                ),
+                buildProfileInfo(
+                  'Nama',
+                  Icons.person,
+                  fullName,
+                  isEditable: isSignedIn,
+                  iconColor: Colors.blue,
+                ),
+                buildProfileInfo(
+                  'Favorite',
+                  Icons.favorite,
+                  '$favoriteCandiCount',
+                  iconColor: Colors.red,
+                ),
                 SizedBox(height: 20),
                 buildProfileAction(),
               ],
@@ -104,7 +149,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  Widget buildProfileInfo(String label, IconData icon, String value, {bool isEditable = true, Color? iconColor}) {
+  Widget buildProfileInfo(String label, IconData icon, String value,
+      {bool isEditable = true, Color? iconColor}) {
     return Column(
       children: [
         Row(
@@ -113,7 +159,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             SizedBox(width: 8),
             Text(
               label,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, ),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
@@ -149,7 +198,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Text('Sign Out', style: TextStyle(color: Colors.lightGreen)),
     )
         : OutlinedButton(
-      onPressed: signIn,
+      onPressed: navigateToSignIn,
       style: OutlinedButton.styleFrom(
         side: BorderSide(color: Colors.grey),
         primary: Colors.transparent,

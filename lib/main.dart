@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
       '/sign_in': (context) => SignInScreen(),
       '/search': (context) => SearchScreen(),
       '/detail': (context) => DetailScreen(zoo: zooList[0]),
+      '/profile': (context) => ProfileScreen(),
 
       // home: DetailScreen(zoo: zooList[0]),
       // home: HomeScreen(),
@@ -57,21 +58,19 @@ class MainScreen extends StatefulWidget {
 class  _MainScreenState extends State<MainScreen> {
   // TODO: 1 Deklarasikan variable
   int _currentIndex = 0;
-  final List<Widget> _children = [
+  final List<Widget> _pages = [
   HomeScreen(),
   SearchScreen(),
   FavoriteScreen(),
   ProfileScreen(),
-    HomeScreen(),
-    SignInScreen(),
-    SignUpScreen(),
+
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // TODO: 2 Buat properti body berupa widget yang ditampilkan
-      body: _children[_currentIndex],
+      body: _pages[_currentIndex],
       // TODO: 3 Buat properti BottomNavigationBar dengan nilai Theme
       bottomNavigationBar: Theme(
           data: Theme.of(context).copyWith(
@@ -98,14 +97,14 @@ class  _MainScreenState extends State<MainScreen> {
                 icon: Icon(Icons.person, color: Colors.lightGreen,),
                 label: 'Profile',
               ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.person, color: Colors.lightGreen),
-        label: 'Sign In',
-      ),
-      BottomNavigationBarItem(
-          icon: Icon(Icons.person_add, color: Colors.lightGreen),
-          label: 'Sign Up',
-      ),
+      // BottomNavigationBarItem(
+      //   icon: Icon(Icons.person, color: Colors.lightGreen),
+      //   label: 'Sign In',
+      // ),
+      // BottomNavigationBarItem(
+      //     icon: Icon(Icons.person_add, color: Colors.lightGreen),
+      //     label: 'Sign Up',
+      // ),
             ],
             onTap: (index) {
               setState(() {
