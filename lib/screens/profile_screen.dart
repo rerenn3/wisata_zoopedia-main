@@ -14,20 +14,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
   String userName = '';
   int favoriteCandiCount = 0;
 
+
   void signIn() {
     setState(() {
       isSignedIn = true;
     });
+
+    // Lakukan operasi logout dan navigasi kembali ke halaman sign-in
+    Navigator.pushReplacementNamed(context, '/sign_in');
   }
 
-  void signOut() {
+  void signOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove('username'); // Hapus nama pengguna dari Shared Preferences
+
+    // Atur state menjadi tidak sign-in dan nama pengguna kosong
     setState(() {
+      fullName = '';
       isSignedIn = false;
     });
   }
 
+
+
   // Metode untuk memperbarui tampilan profil
-  void updateProfile(String newFullName, String newUsername, int newFavoriteCandiCount) {
+  void updateProfile(String newFullName, String newUsername,
+      int newFavoriteCandiCount) {
     setState(() {
       fullName = newFullName;
       userName = newUsername;
@@ -35,19 +47,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-  // void _onSignUpSuccess(String newUsername, String newFullName) async {
-  //   // Simpan nama pengguna di SharedPreferences
-  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.setString('username', newUsername);
-  //   prefs.setString('fullName', newFullName);
-  //
-  //   // Navigasi ke halaman profil
-  //   Navigator.pushReplacementNamed(context, '/profile');
-  // }
 
   void navigateToSignIn() {
-    // Implementasi untuk navigasi ke halaman sign in
-    Navigator.pushNamed(context, '/sign_in');
+    Navigator.pushReplacementNamed(context, '/sign_in').then((result) {
+      if (result != null && result is String) {
+        // Ambil nama pengguna dari hasil login dan simpan ke Shared Preferences
+        saveUserName(result);
+      }
+    });
+  }
+
+  void saveUserName(String userName) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('username', userName);
+
+    // Set state dengan nama pengguna baru
+    setState(() {
+      fullName = userName;
+      isSignedIn = true;
+    });
   }
 
   void navigateToSignUp() {
@@ -58,7 +76,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     // Mendapatkan data pengguna dari argument navigasi
-    final Map<String, dynamic>? args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+    final Map<String, dynamic>? args = ModalRoute
+        .of(context)!
+        .settings
+        .arguments as Map<String, dynamic>?;
 
     if (args != null) {
       fullName = args['fullName'] ?? '';
@@ -93,7 +114,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.lightGreen, width: 3),
+                          border: Border.all(color: Colors.lightGreen,
+                              width: 3),
                           shape: BoxShape.circle,
                         ),
                         child: CircleAvatar(
@@ -131,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Icons.person,
                   fullName,
                   isEditable: isSignedIn,
-                  iconColor: Colors.blue,
+                  iconColor: Colors.green,
                 ),
                 buildProfileInfo(
                   'Favorite',
@@ -198,7 +220,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Text('Sign Out', style: TextStyle(color: Colors.lightGreen)),
     )
         : OutlinedButton(
-      onPressed: navigateToSignIn,
+      onPressed: signIn,
       style: OutlinedButton.styleFrom(
         side: BorderSide(color: Colors.grey),
         primary: Colors.transparent,
