@@ -15,26 +15,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
   int favoriteCandiCount = 0;
 
 
-  void signIn() {
-    setState(() {
-      isSignedIn = true;
-    });
+  void signIn() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String username = prefs.getString('username') ?? '';
+    String storedFullName = prefs.getString('fullName') ?? ''; // Ambil nama lengkap dari SharedPreferences
 
+    if (username.isNotEmpty) {
+      setState(() {
+        userName = username;
+        fullName = storedFullName; // Menggunakan nama lengkap yang disimpan
+        isSignedIn = true;
+      });
+    }
     // Lakukan operasi logout dan navigasi kembali ke halaman sign-in
     Navigator.pushReplacementNamed(context, '/sign_in');
   }
 
   void signOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove('username'); // Hapus nama pengguna dari Shared Preferences
+    prefs.remove('username');
 
-    // Atur state menjadi tidak sign-in dan nama pengguna kosong
     setState(() {
       fullName = '';
       isSignedIn = false;
     });
   }
-
 
 
   // Metode untuk memperbarui tampilan profil
@@ -50,23 +55,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void navigateToSignIn() {
     Navigator.pushReplacementNamed(context, '/sign_in').then((result) {
-      if (result != null && result is String) {
-        // Ambil nama pengguna dari hasil login dan simpan ke Shared Preferences
-        saveUserName(result);
+      if (result != null && result is Map<String, String>) {
+        // Ambil nama pengguna dan nama lengkap dari hasil login dan simpan ke SharedPreferences
+        saveUserData(result['userName']!, result['fullName']!);
       }
     });
   }
 
-  void saveUserName(String userName) async {
+  void saveUserData(String userName, String fullName) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('username', userName);
+    prefs.setString('fullName', fullName);
 
-    // Set state dengan nama pengguna baru
     setState(() {
-      fullName = userName;
+      this.userName = userName;
+      this.fullName = fullName;
       isSignedIn = true;
     });
   }
+
 
   void navigateToSignUp() {
     // Implementasi untuk navigasi ke halaman sign up
@@ -153,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Icons.person,
                   fullName,
                   isEditable: isSignedIn,
-                  iconColor: Colors.green,
+                  iconColor: Colors.lightGreen,
                 ),
                 buildProfileInfo(
                   'Favorite',
@@ -173,6 +180,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget buildProfileInfo(String label, IconData icon, String value,
       {bool isEditable = true, Color? iconColor}) {
+    String displayedValue = label == 'Nama' ? fullName : value; // Menggunakan fullName untuk label 'Nama'
+
     return Column(
       children: [
         Row(
@@ -195,7 +204,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             Expanded(
               child: Text(
-                ': $value',
+                ': $displayedValue', // Menggunakan displayedValue di sini
                 style: TextStyle(fontSize: 18, color: Colors.lightGreen),
               ),
             ),
@@ -208,6 +217,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ],
     );
   }
+
 
   Widget buildProfileAction() {
     return isSignedIn

@@ -48,7 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       final encryptedPassword = encrypter.encrypt(password, iv: iv);
 
       //simpan data pengguna di SharedPreferences
-      prefs.setString('fulname', encryptedName.base64);
+      prefs.setString('fullname', encryptedName.base64);
       prefs.setString('username', encryptedUsername.base64);
       prefs.setString('password', encryptedPassword.base64);
       prefs.setString('key', key.base64);

@@ -59,13 +59,14 @@ class _SignInScreenState extends State<SignInScreen> {
         if (data.isNotEmpty) {
           final decryptedUsername = data['username'];
           final decryptedPassword = data['password'];
+          final decryptedFullName = data['fullName'];
+          print('Decrypted Full Name: $decryptedFullName'); // Tambahkan print statement ini
+          // Ambil nama lengkap dari data
           if (username == decryptedUsername && password == decryptedPassword) {
-            // Mengambil decryptedFullName dari hasil dekripsi
-            final decryptedFullName = data['fullName'];
-
             _errorText = '';
             _isSignedIn = true;
             prefs.setBool('isSignedIn', true);
+
             // Pemanggilan untuk menghapus semua halaman dalam tumpukan navigasi
             WidgetsBinding.instance.addPostFrameCallback((_) {
               Navigator.of(context).popUntil((route) => route.isFirst);
@@ -75,7 +76,6 @@ class _SignInScreenState extends State<SignInScreen> {
               Navigator.pushReplacementNamed(context, '/',arguments: {
                 'userName': decryptedUsername,
                 'fullName': decryptedFullName,
-
                 'favoriteCandiCount': 0, // Atur nilai sesuai kebutuhan
               });
               print('Sign in succeeded');
