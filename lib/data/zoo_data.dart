@@ -14,6 +14,7 @@ var zooList = [
       'https://img.harianjogja.com/posts/2023/12/10/1157755/wisata_puncak_-_taman_safari_indonesia_1671529719.jpg',
       'https://news.tamansafari.com/Newsportalv22ok/upload/83_Prigen_Kecil.jpg',
       'https://www.blibli.com/friends-backend/wp-content/uploads/2022/12/panduan-wisata-taman-safari-indonesia-bali.jpeg,',
+      'https://images.bisnis.com/posts/2023/02/13/1627669/wisata_puncak_-_taman_safari_indonesia_1671529719.jpg',
 
 
     ],
@@ -29,6 +30,8 @@ var zooList = [
     imageAsset: 'images/Ragunan.jpg',
     imageUrls: [
       'https://statik.tempo.co/data/2021/01/03/id_991679/991679_720.jpg',
+      'https://upload.wikimedia.org/wikipedia/commons/7/78/Ragunan_Zoo_Gate.jpg',
+      'https://statik.tempo.co/data/2021/01/03/id_991679/991679_720.jpg'
 
     ],
     isFavorite: false,
@@ -43,6 +46,8 @@ var zooList = [
     imageAsset: 'images/batu.jpg',
     imageUrls: [
       'https://idm.in/564MJaP',
+      'https://assets-a1.kompasiana.com/items/album/2022/04/11/503e4e80d40cf240e0a71d3d25616ca8-6254230dbb44863a5d07ff44.jpg',
+      'https://wisatapedi.com/wp-content/uploads/2015/07/kebun-binatang-secreet-zoo-batu-malang.jpg'
 
     ],
     isFavorite: false,
@@ -57,6 +62,8 @@ var zooList = [
     imageAsset: 'images/Lembang.jpg',
     imageUrls: [
       'https://idm.in/nnSLjNu',
+      'https://ad-cms-headless.imgix.net/public/tipsandtrick/lembangpark-1608738073890.jpeg?w=720&h=auto&q=65&fm=webp&auto=format&fit=max&crop=center',
+      'https://bolulembang.co.id/wp-content/uploads/2022/07/lembang-park-and-zoo-1.jpg?x31789'
 
     ],
     isFavorite: false,
@@ -71,6 +78,9 @@ var zooList = [
     imageAsset: 'images/Gembira.jpg',
     imageUrls: [
       'https://idm.in/xSdtjgZ',
+      'https://visitingjogja.jogjaprov.go.id/wp-content/uploads/2021/10/gl7.jpg',
+      'https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2022/12/24/483820672.jpg'
+
 
     ],
     isFavorite: false,
@@ -85,6 +95,8 @@ var zooList = [
     imageAsset: 'images/puntiKayu.jpg',
     imageUrls: [
       'https://idm.in/7ZWfFD9',
+      'https://cdn.wisata.app/diary/4c679c19-a365-48a2-9581-7792deacd67f_xs.jpg',
+      'https://wisata-id.com/wp-content/uploads/2023/01/pintu2.jpeg'
 
     ],
     isFavorite: false,
@@ -112,7 +124,7 @@ var zooList = [
     luas: '30 hektar',
     imageAsset: 'images/LembahHijau.jpg',
     imageUrls: [
-      '',
+      'https://asset-2.tstatic.net/lampung/foto/bank/images/Susana-Taman-wisata-dan-taman-satwa-Lembah-Hijau.jpg',
 
     ],
     isFavorite: false,
