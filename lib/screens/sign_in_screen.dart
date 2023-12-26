@@ -63,7 +63,6 @@ class _SignInScreenState extends State<SignInScreen> {
           final decryptedUsername = data['username'];
           final decryptedPassword = data['password'];
           final decryptedFullName = data['fullName'];
-          print('Decrypted Full Name: $decryptedFullName'); // Tambahkan print statement ini
           // Ambil nama lengkap dari data
           if (username == decryptedUsername && password == decryptedPassword) {
             _errorText = '';

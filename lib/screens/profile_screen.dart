@@ -41,45 +41,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-
-  // Metode untuk memperbarui tampilan profil
-  void updateProfile(String newFullName, String newUsername,
-      int newFavoriteCandiCount) {
-    setState(() {
-      fullName = newFullName;
-      userName = newUsername;
-      favoriteCandiCount = newFavoriteCandiCount;
-    });
-  }
-
-
-  void navigateToSignIn() {
-    Navigator.pushReplacementNamed(context, '/sign_in').then((result) {
-      if (result != null && result is Map<String, String>) {
-        // Ambil nama pengguna dan nama lengkap dari hasil login dan simpan ke SharedPreferences
-        saveUserData(result['userName']!, result['fullName']!);
-      }
-    });
-  }
-
-  void saveUserData(String userName, String fullName) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString('username', userName);
-    prefs.setString('fullName', fullName);
-
-    setState(() {
-      this.userName = userName;
-      this.fullName = fullName;
-      isSignedIn = true;
-    });
-  }
-
-
-  void navigateToSignUp() {
-    // Implementasi untuk navigasi ke halaman sign up
-    Navigator.pushNamed(context, '/sign_up');
-  }
-
   @override
   Widget build(BuildContext context) {
     // Mendapatkan data pengguna dari argument navigasi
