@@ -160,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Icons.person,
                   fullName,
                   isEditable: isSignedIn,
-                  iconColor: Colors.grey,
+                  iconColor: Colors.red,
                 ),
                 buildProfileInfo(
                   'Favorite',

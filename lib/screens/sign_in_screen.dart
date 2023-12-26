@@ -30,6 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
       ) async {
     final encryptedUsername = sharedPreferences.getString('username') ?? '';
     final encryptedPassword = sharedPreferences.getString('password') ?? '';
+    final encryptedFullName = sharedPreferences.getString('FullName') ?? '';
     final keyString = sharedPreferences.getString('key') ?? '';
     final ivString = sharedPreferences.getString('iv') ?? '';
 
@@ -39,10 +40,12 @@ class _SignInScreenState extends State<SignInScreen> {
     final encrypter = encrypt.Encrypter(encrypt.AES(key));
     final decryptedUsername = encrypter.decrypt64(encryptedUsername, iv:iv);
     final decryptedPassword = encrypter.decrypt64(encryptedPassword, iv:iv);
+    final decryptedFullName = encrypter.decrypt64(encryptedFullName, iv: iv);
     print('decryptedUsername1 : $decryptedUsername');
     print('decryptedPassword1 : $decryptedPassword');
+    print('decryptedFullName : $decryptedFullName');
 
-    return{'username' :  decryptedUsername, 'password': decryptedPassword};
+    return{'username' :  decryptedUsername, 'password': decryptedPassword, 'fullName': decryptedFullName};
 
   }
 
