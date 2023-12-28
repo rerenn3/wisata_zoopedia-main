@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'favorite_screen.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -54,6 +56,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
       userName = args['userName'] ?? '';
       favoriteCandiCount = args['favoriteCandiCount'] ?? 0;
     }
+
+    FavoriteScreen.onFavoriteUpdated = () {
+      if (mounted) {
+        setState(() {
+          favoriteCandiCount = FavoriteScreen.favoriteList.length;
+        });
+        print('Profile Screen Updated. Count: $favoriteCandiCount');
+      }
+    };
+
 
     return Scaffold(
       body: Stack(
@@ -121,7 +133,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Icons.person,
                   fullName,
                   isEditable: isSignedIn,
-                  iconColor: Colors.red,
+                  iconColor: Colors.pink,
                 ),
                 buildProfileInfo(
                   'Favorite',

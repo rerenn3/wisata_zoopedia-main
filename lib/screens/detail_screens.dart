@@ -49,7 +49,6 @@ class _DetailScreenState extends State<DetailScreen> {
 
   Future<void> _toggleFavorite() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
     // Memeriksa apakah pengguna sudah sign in
     if (!isSignedIn) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -74,6 +73,7 @@ class _DetailScreenState extends State<DetailScreen> {
       FavoriteScreen.removeFavorite(widget.zoo);
     }
   }
+
 
 
   @override

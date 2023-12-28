@@ -7,13 +7,16 @@ class FavoriteScreen extends StatefulWidget {
 
   // Buat daftar untuk menyimpan item favorit
   static List<Zoo> favoriteList = [];
+  // Callback untuk memperbarui tampilan
+  static void Function()? onFavoriteUpdated;
 
   // Metode untuk menambahkan item favorit
   static void addFavorite(Zoo zoo) {
     favoriteList.add(zoo);
     // Perbarui tampilan ketika item favorit ditambahkan
-    if (onListUpdated != null) {
-      onListUpdated!();
+    if (onFavoriteUpdated != null) {
+      onFavoriteUpdated!();
+      print('Favorite added. Callback called.');
     }
   }
 
@@ -21,17 +24,17 @@ class FavoriteScreen extends StatefulWidget {
   static void removeFavorite(Zoo zoo) {
     favoriteList.remove(zoo);
     // Perbarui tampilan ketika item favorit dihapus
-    if (onListUpdated != null) {
-      onListUpdated!();
+    if (onFavoriteUpdated != null) {
+      onFavoriteUpdated!();
+      print('Favorite removed. Callback called.');
     }
   }
-
-  // Callback untuk memperbarui tampilan
-  static void Function()? onListUpdated;
 
   @override
   State<FavoriteScreen> createState() => _FavoriteScreenState();
 }
+
+
 
 class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
