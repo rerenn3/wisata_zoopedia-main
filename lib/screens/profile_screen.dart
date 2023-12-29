@@ -20,7 +20,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void signIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String username = prefs.getString('username') ?? '';
-    String storedFullName = prefs.getString('fullName') ?? ''; // Ambil nama lengkap dari SharedPreferences
+    String storedFullName = prefs.getString('fullName') ??
+        ''; // Ambil nama lengkap dari SharedPreferences
 
     if (username.isNotEmpty) {
       setState(() {
@@ -30,10 +31,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       });
     }
     // Lakukan operasi logout dan navigasi kembali ke halaman sign-in
-
-    Navigator.pushReplacementNamed(context, '/sign_in');
+    if (mounted) {
+      Navigator.pushReplacementNamed(context, '/sign_in');
+    }
   }
-
   void signOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove('username');
@@ -131,7 +132,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Icons.person,
                   fullName,
                   isEditable: isSignedIn,
-                  iconColor: Colors.red,
+                  iconColor: Colors.purple,
                 ),
                 buildProfileInfo(
                   'Favorite',
