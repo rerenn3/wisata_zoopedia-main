@@ -1,16 +1,14 @@
-
-
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 import '../models/zoo.dart';
 import 'favorite_screen.dart';
 
 class DetailScreen extends StatefulWidget {
   Zoo zoo;
-  DetailScreen({super.key, required this.zoo});
+
+  DetailScreen({Key? key, required this.zoo}) : super(key: key);
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();
@@ -23,22 +21,20 @@ class _DetailScreenState extends State<DetailScreen> {
   @override
   void initState() {
     super.initState();
-    _checkSignInStatus();  //memeriksa status sign in saat layar dimuat
-    _loadFavoriteStatus();  // memeriksa status favorite saat layar dimuat
+    _checkSignInStatus(); // memeriksa status sign in saat layar dimuat
+    _loadFavoriteStatus(); // memeriksa status favorite saat layar dimuat
   }
 
-
-
-  //Memeriksa Status Sign in
+  // Memeriksa Status Sign in
   void _checkSignInStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool signedIn = prefs.getBool('isSignedIn') ?? false ;
+    bool signedIn = prefs.getBool('isSignedIn') ?? false;
     setState(() {
       isSignedIn = signedIn;
     });
   }
 
-  //memeriksa Status Favorite
+  // Memeriksa Status Favorite
   void _loadFavoriteStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool favorite = prefs.getBool('favorite_${widget.zoo.nama}') ?? false;
@@ -49,11 +45,11 @@ class _DetailScreenState extends State<DetailScreen> {
 
   Future<void> _toggleFavorite() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+
     // Memeriksa apakah pengguna sudah sign in
     if (!isSignedIn) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        Navigator.pushReplacementNamed(context, '/sign_in');
-      });
+      // Navigasi ke halaman sign-in jika belum sign-in
+      Navigator.pushReplacementNamed(context, '/sign_in');
       return;
     }
 
@@ -73,8 +69,6 @@ class _DetailScreenState extends State<DetailScreen> {
       FavoriteScreen.removeFavorite(widget.zoo);
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +137,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         ),
                       ),
                       IconButton(
-                        onPressed: (){
+                        onPressed: () {
                           _toggleFavorite();
                         },
                         icon: Icon(

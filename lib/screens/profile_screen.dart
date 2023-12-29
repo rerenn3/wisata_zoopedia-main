@@ -30,6 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       });
     }
     // Lakukan operasi logout dan navigasi kembali ke halaman sign-in
+
     Navigator.pushReplacementNamed(context, '/sign_in');
   }
 
@@ -57,15 +58,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       favoriteCandiCount = args['favoriteCandiCount'] ?? 0;
     }
 
+    // Callback untuk memperbarui tampilan Jumlah Favorit
     FavoriteScreen.onFavoriteUpdated = () {
-      if (mounted) {
-        setState(() {
-          favoriteCandiCount = FavoriteScreen.favoriteList.length;
-        });
-        print('Profile Screen Updated. Count: $favoriteCandiCount');
-      }
+      setState(() {
+        favoriteCandiCount = FavoriteScreen.favoriteList.length;
+      });
     };
-
 
     return Scaffold(
       body: Stack(
@@ -133,7 +131,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Icons.person,
                   fullName,
                   isEditable: isSignedIn,
-                  iconColor: Colors.pink,
+                  iconColor: Colors.red,
                 ),
                 buildProfileInfo(
                   'Favorite',
