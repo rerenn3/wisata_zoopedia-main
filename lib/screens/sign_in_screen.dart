@@ -19,9 +19,6 @@ class _SignInScreenState extends State<SignInScreen> {
   bool _isSignedIn = false;
   bool _obscurePassword = true;
 
-  // // Menambahkan variabel decryptedFullName
-  // String _decryptedFullName = '';
-
   // Menambahkan variabel decryptedFullName
   String _decryptedUsername = '';
 
@@ -106,79 +103,80 @@ class _SignInScreenState extends State<SignInScreen> {
       appBar: AppBar(
         title: Text('Sign In'),
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Form(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'images/Login-amico.png',
-                    height: 300,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                height: 300,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/Login-amico.png'),
+                    fit: BoxFit.contain,
                   ),
-                  SizedBox(height: 20),
-                  TextFormField(
-                    controller: _usernameController,
-                    decoration: InputDecoration(
-                      labelText: "Nama Pengguna",
-                      border: OutlineInputBorder(),
-                    ),
+                ),
+              ),
+              SizedBox(height: 40),
+              TextFormField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  labelText: "Nama Pengguna",
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 20),
+              TextFormField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  labelText: "Kata Sandi",
+                  errorText: _errorText.isNotEmpty ? _errorText : null,
+                  border: OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _obscurePassword = !_obscurePassword;
+                      });
+                    },
+                    icon: Icon(_obscurePassword
+                        ? Icons.visibility_off
+                        : Icons.visibility),
                   ),
-                  SizedBox(height: 20),
-                  TextFormField(
-                    controller: _passwordController,
-                    decoration: InputDecoration(
-                      labelText: "Kata Sandi",
-                      errorText: _errorText.isNotEmpty ? _errorText : null,
-                      border: OutlineInputBorder(),
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _obscurePassword = !_obscurePassword;
-                          });
-                        },
-                        icon: Icon(_obscurePassword
-                            ? Icons.visibility_off
-                            : Icons.visibility),
-                      ),
-                    ),
-                    obscureText: _obscurePassword,
+                ),
+                obscureText: _obscurePassword,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _signIn,
+                child: Text('Sign In'),
+              ),
+              SizedBox(height: 20),
+              RichText(
+                text: TextSpan(
+                  text: 'Belum punya akun? ',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.deepPurple,
                   ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    onPressed: _signIn,
-                    child: Text('Sign In'),
-                  ),
-                  SizedBox(height: 20),
-                  RichText(
-                    text: TextSpan(
-                      text: 'Belum punya akun? ',
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Daftar di sini.',
                       style: TextStyle(
                         fontSize: 16,
-                        color: Colors.deepPurple,
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
                       ),
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'Daftar di sini.',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigator.pushNamed(context, "/sign_up");
-                            },
-                        ),
-                      ],
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.pushNamed(context, "/sign_up");
+                        },
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
       ),

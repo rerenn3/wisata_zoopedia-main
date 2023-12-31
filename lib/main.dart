@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Wisata Zoopedia',
       theme: ThemeData(
 
@@ -97,14 +98,6 @@ class  _MainScreenState extends State<MainScreen> {
                 icon: Icon(Icons.person, color: Colors.lightGreen,),
                 label: 'Profile',
               ),
-      // BottomNavigationBarItem(
-      //   icon: Icon(Icons.person, color: Colors.lightGreen),
-      //   label: 'Sign In',
-      // ),
-      // BottomNavigationBarItem(
-      //     icon: Icon(Icons.person_add, color: Colors.lightGreen),
-      //     label: 'Sign Up',
-      // ),
             ],
             onTap: (index) {
               setState(() {

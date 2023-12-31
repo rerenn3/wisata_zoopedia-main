@@ -232,7 +232,10 @@ class _DetailScreenState extends State<DetailScreen> {
                   const SizedBox(
                     height: 16,
                   ),
-                  Text(widget.zoo.deskripsi),
+                  SingleChildScrollView(
+                    child: Text(
+                        widget.zoo.deskripsi),
+                  )
                 ],
               ),
             ),
