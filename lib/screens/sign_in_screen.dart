@@ -75,7 +75,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Navigator.pushReplacementNamed(context, '/',arguments: {
                 'userName': decryptedUsername,
                 'fullName': decryptedFullName,
-                'favoriteCandiCount': 0, // Atur nilai sesuai kebutuhan
+                'favoriteZooCount': 0, // Atur nilai sesuai kebutuhan
               });
               print('Sign in succeeded');
             });

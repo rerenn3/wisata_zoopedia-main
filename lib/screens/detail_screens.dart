@@ -6,9 +6,9 @@ import '../models/zoo.dart';
 import 'favorite_screen.dart';
 
 class DetailScreen extends StatefulWidget {
-  Zoo zoo;
+  final Zoo zoo;
 
-  DetailScreen({Key? key, required this.zoo}) : super(key: key);
+  const DetailScreen({Key? key, required this.zoo}) : super(key: key);
 
   @override
   State<DetailScreen> createState() => _DetailScreenState();

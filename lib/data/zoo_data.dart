@@ -12,9 +12,6 @@ var zooList = [
     imageAsset: 'images/Safari.jpg',
     imageUrls: [
       'https://img.harianjogja.com/posts/2023/12/10/1157755/wisata_puncak_-_taman_safari_indonesia_1671529719.jpg',
-      'https://news.tamansafari.com/Newsportalv22ok/upload/83_Prigen_Kecil.jpg',
-      'https://www.blibli.com/friends-backend/wp-content/uploads/2022/12/panduan-wisata-taman-safari-indonesia-bali.jpeg,',
-      'https://images.bisnis.com/posts/2023/02/13/1627669/wisata_puncak_-_taman_safari_indonesia_1671529719.jpg',
 
 
     ],

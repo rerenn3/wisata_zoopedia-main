@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:wisata_zoopedia/data/zoo_data.dart';
 import 'package:wisata_zoopedia/models/zoo.dart';
 
+import 'detail_screens.dart';
+
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({Key? key});
 
@@ -42,13 +44,13 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     // Dapatkan daftar wisata yang sudah difavoritkan
-    List<Zoo> favoriteZoos = FavoriteScreen.favoriteList;
+    List<Zoo> favoriteZoo = FavoriteScreen.favoriteList;
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Favorite Zoo'),
       ),
-      body: favoriteZoos.isEmpty
+      body: favoriteZoo.isEmpty
           ? Center(
         child: Text(
           'Belum ada wisata yang difavoritkan.',
@@ -56,9 +58,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         ),
       )
           : ListView.builder(
-        itemCount: favoriteZoos.length,
+        itemCount: favoriteZoo.length,
         itemBuilder: (context, index) {
-          final zoo = favoriteZoos[index];
+          final zoo = favoriteZoo[index];
           return Card(
             margin:
             const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -69,10 +71,16 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
               title: Text(zoo.nama),
               subtitle: Text(zoo.lokasi),
               onTap: () {
-                // Implementasi aksi ketika item ditekan
+                // Implementasi aksi ketika item ditekann
                 // Misalnya, navigasi ke halaman detail
-                Navigator.pushNamed(context, '/detail', arguments: zoo);
-              },
+                print('Selected Zoo: ${zoo.nama}'); // Cetak nilai zoo sebelum navigasii
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                    builder: (context) => DetailScreen(zoo: zoo),
+                    ),
+                );
+              }
             ),
           );
         },

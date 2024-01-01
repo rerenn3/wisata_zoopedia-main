@@ -14,7 +14,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   bool isSignedIn = false;
   String fullName = '';
   String userName = '';
-  int favoriteCandiCount = 0;
+  int favoriteZooCount = 0;
 
 
   void signIn() async {
@@ -31,9 +31,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       });
     }
     // Lakukan operasi logout dan navigasi kembali ke halaman sign-in
-    if (mounted) {
       Navigator.pushReplacementNamed(context, '/sign_in');
-    }
+
   }
 
   void signOut() async {
@@ -48,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Mendapatkan data pengguna dari argument navigasi
+    // Mendapatkan data pengguna dari argument navigasii
     final Map<String, dynamic>? args = ModalRoute
         .of(context)!
         .settings
@@ -57,15 +56,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (args != null) {
       fullName = args['fullName'] ?? '';
       userName = args['userName'] ?? '';
-      favoriteCandiCount = args['favoriteCandiCount'] ?? 0;
+      favoriteZooCount = args['favoriteCandiCount'] ?? 0;
     }
 
-    // Callback untuk memperbarui tampilan Jumlah Favorit
-    FavoriteScreen.onFavoriteUpdated = () {
-      setState(() {
-        favoriteCandiCount = FavoriteScreen.favoriteList.length;
-      });
-    };
+    // // Callback untuk memperbarui tampilan Jumlah Favorit
+    // FavoriteScreen.onFavoriteUpdated = () {
+    //   setState(() {
+    //     favoriteZooCount = FavoriteScreen.favoriteList.length;
+    //   });
+    // };
+
 
     return Scaffold(
       body: Stack(
@@ -133,12 +133,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Icons.person,
                   fullName,
                   isEditable: isSignedIn,
-                  iconColor: Colors.pink,
+                  iconColor: Colors.red,
                 ),
                 buildProfileInfo(
                   'Favorite',
                   Icons.favorite,
-                  '$favoriteCandiCount',
+                  '$favoriteZooCount',
                   iconColor: Colors.red,
                 ),
                 SizedBox(height: 20),
