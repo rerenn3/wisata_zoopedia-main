@@ -127,4 +127,104 @@ var zooList = [
     isFavorite: false,
   ),
 
+  Zoo(
+    nama: 'Bali Safari and Marine Park',
+    lokasi: 'Gianyar, Bali',
+    deskripsi:
+    'Bali Safari and Marine Park adalah destinasi wisata unik di Pulau Bali yang menawarkan pengalaman melihat satwa liar dalam habitat yang menyerupai alam asli mereka. Taman ini terkenal dengan konsep "safari" di mana pengunjung dapat menjelajahi area yang dirancang seperti habitat alami hewan-hewan Afrika dan Asia dengan menggunakan kendaraan khusus safari. Selain itu, taman ini juga memiliki pertunjukan satwa, atraksi air, dan berbagai kegiatan interaktif dengan satwa.',
+    dibangun: 'Tahun 2007',
+    luas: '40 hektar',
+    imageAsset: 'images/bali.jpg',
+    imageUrls: [
+      'https://asset.kompas.com/crops/kI2X4KGL6yrnASc040_WP3HUzQs=/0x0:1440x960/750x500/data/photo/2022/05/06/6274fafe22620.jpg',
+      'https://asset.kompas.com/crops/24agdDa87ct2_rfOSEamiopelPE=/0x705:1440x1665/750x500/data/photo/2022/05/06/6274fd06c94b5.jpg',
+      'https://asset.kompas.com/crops/BHv-iW6rz60bTULe0Kt5Dp-SYfQ=/0x0:1440x960/750x500/data/photo/2022/05/06/6274fdf38d821.jpg',
+
+    ],
+    isFavorite: false,
+  ),
+
+  Zoo(
+    nama: 'Bali Zoo Park',
+    lokasi: 'Denpasar, Bali',
+    deskripsi:
+    'Bali Zoo Park adalah taman margasatwa yang terletak di Gianyar, denpasar Bali, Indonesia. Taman ini menawarkan pengalaman yang mendidik dan menghibur bagi pengunjung dengan berbagai koleksi hewan dari berbagai belahan dunia. Pengunjung dapat melihat berbagai jenis satwa, termasuk gajah, harimau, orangutan, dan banyak lagi Bali Zoo Park memiliki luas sekitar 12 hektar dan terletak sekitar 15 kilometer dari pusat Kota Denpasar. Taman ini menawarkan berbagai kegiatan interaktif, seperti foto bersama hewan, feeding session, dan bahkan program "zookeeper for a day" yang memungkinkan pengunjung untuk merasakan pengalaman menjadi penjaga satwa untuk sehari.',
+    dibangun: 'Tahun 2007',
+    luas: '15 hektar',
+    imageAsset: 'images/baliZoo.jpg',
+    imageUrls: [
+      'https://cosmobalitours.co.id/wp-content/uploads/2021/08/Paket-Wisata-Bali-Zoo-Park-1.jpg',
+      ''
+
+    ],
+    isFavorite: false,
+  ),
+
+  Zoo(
+    nama: 'Semarang Zoo and Recreation Park ',
+    lokasi: 'Semarang, Jawa Tengah',
+    deskripsi:
+    'Kebun Binatang Semarang merupakan tempat rekreasi yang menyajikan berbagai jenis hewan dari berbagai belahan dunia. Selain observasi satwa, kebun binatang ini biasanya menyediakan berbagai wahana rekreasi dan fasilitas keluarga, seperti taman bermain anak-anak.',
+    dibangun: 'Tahun 2014',
+    luas: '22 hektar',
+    imageAsset: 'images/semarang-zoo.jpeg',
+    imageUrls: [
+      'https://bobobox.com/blog/wp-content//uploads/elementor/thumbs/5eb445b26de55-q5nt1kdu5pcuizgiaw941la10k740tpnqq2253p42s.jpg',
+
+
+    ],
+    isFavorite: false,
+  ),
+
+  Zoo(
+    nama: 'Kasang Kulim ',
+    lokasi: 'Pekanbaru, Riau',
+    deskripsi:
+    'Kebun binatang kasang kulim bertempat di provinsi riau pulau Sumatra yang tepatnya berada di kubang jaya kecamatan siak hulu kabupaten Kampar, riau.untuk menuju ke kebun binatang kasang kulim riau ini  kalian bisa menghabiskan waktu yang cukup lama diperjalanan Kebun binatang kasang kulim sangat nyaman kita kunjungi saat saat akhir pekan bersama keluarga karena tempatnya sangat nyaman untuk kita berlibur tapi bisa sambil menambah wawasan, walaupun kebun bintang kasang kulim ini tidak memiliki tempat yang besar tapi kebun bintang kasang kulim sangat nyaman untuk anak anak bereakreasi, berlibur untuk menyegarkan pikirannya selama seminggu full mereka belajar.',
+    dibangun: 'Tahun 1999',
+    luas: '12 hektar',
+    imageAsset: 'images/kasang.jpg',
+    imageUrls: [
+      '',
+
+
+    ],
+    isFavorite: false,
+  ),
+
+  Zoo(
+    nama: 'Batam Zoo Paradise',
+    lokasi: 'Batam, Riau',
+    deskripsi:
+    'Batam Zoo Paradise, Anda bisa melihat berbagai macam hewan dari dekat. Berkunjung ke mini zoo juga bisa menjadi sarana edukasi untuk anak-anak. Selain itu, Batam Zoo Paradise juga dilengkapi dengan wahana kolam renang yang dapat menambah keseruan liburan Saat berkunjung ke Batam Zoo Paradise, Anda bisa melihat berbagai binatang yang dipelihara di sana, di antaranya capybara, domba merino, domba garut, kuda poni, burung unta, burung emu, burung rhea, burung macaw, rusa tutul, alpaka, dan hewan lainnya. Ada juga angsa, kelinci, hamster, kura-kura sulcata, ayam brahma, burung unta, angsa hitam, dan lainnya.',
+    dibangun: 'Tahun 2023',
+    luas: '10 hektar',
+    imageAsset: 'images/batam.jpeg',
+    imageUrls: [
+      'https://akcdn.detik.net.id/community/media/visual/2023/12/24/suasana-di-batam-zoo-paradise-alamudin-hamapudetiksumut-2.jpeg?w=800',
+      'https://akcdn.detik.net.id/community/media/visual/2023/12/24/suasana-di-batam-zoo-paradise-alamudin-hamapudetiksumut-4_169.jpeg?w=620'
+
+
+    ],
+    isFavorite: false,
+  ),
+  Zoo(
+    nama: 'Siantar Zoo ',
+    lokasi: 'Pematangsiantar, Sumatra Utara',
+    deskripsi:
+    'Taman Hewan Pematangsiantar (THPS) atau sebelumnya dikenal juga sebagai Kebun Binatang Siantar dan Kebun Binatang Pematangsiantar, adalah kebun binatang yang terletak di kota Pematangsiantar. Kebun binatang ini resmi dibuka untuk umum pada tanggal 27 November 1936 dengan luas areal sekitar 4.5 hektare. THPS berlokasi di Jalan Gunung Simanuk-Manuk Kota Pematangsiantar, Provinsi Sumatera Utara. Sampai saat ini THPS masih mempertahankan statusnya sebagai kebun binatang yang terlengkap dan terbaik di wilayah Sumatera Utara. Koleksi satwa dan popularitasnya bahkan mengalahkan Kebun Binatang Medan dengan luas yang berpuluh kali lebih besar daripada THPS dan merupakan kebun binatang terbesar di wilayah Sumatera Utara yang terletak di ibu kota provinsi Sumatera Utara, Kota Medan. Meskipun dengan berbagai keterbatasan seperti sempitnya ruang yang tersedia, kurangnya pendanaan serta pemahaman untuk proyek peremajaan eksibisi hewan, namun melalui usaha perawatan hewan yang cukup baik, THPS cukup berhasil dalam menjalankan peranannya sebagai lembaga konservasi serta dapat digolongkan sebagai salah satu kebun binatang yang terbaik di antara kebun binatang yang ada di Indonesia. Taman Hewan Pematangsiantar mengantongi izin berupa Surat Keputusan Menteri Kehutanan dengan Nomor. SK.84/Menhut-II/2007 yang dikeluarkan pada tanggal 15 Maret 2007',
+    dibangun: 'Tahun 1936',
+    luas: '5 hektar',
+    imageAsset: 'images/siantarun.jpg',
+    imageUrls: [
+      'https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_613/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/bok018abslh9xjbrgso0/TiketKebunBinatangPematangSiantar.webp',
+      'https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_994,h_1080/w_61,x_11,y_11,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/fzkxqd4ybflgxubd7wky/TiketKebunBinatangPematangSiantar.webp',
+      'https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_861/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/nnypfobxuojemw7yxoyq/TiketKebunBinatangPematangSiantar.webp',
+      'https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_863/w_80,x_15,y_15,g_south_west,l_Klook_water_br_trans_yhcmh3/activities/t2tgz2kzpmv9rbeayem5/TiketKebunBinatangPematangSiantar.webp',
+
+
+    ],
+    isFavorite: false,
+  ),
+
 ];
