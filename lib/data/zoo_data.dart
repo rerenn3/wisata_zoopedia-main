@@ -127,4 +127,19 @@ var zooList = [
     isFavorite: false,
   ),
 
+  Zoo(
+    nama: 'Bali Safari and Marine Park',
+    lokasi: 'Gianyar, Bali',
+    deskripsi:
+    'Bali Safari and Marine Park adalah destinasi wisata unik di Pulau Bali yang menawarkan pengalaman melihat satwa liar dalam habitat yang menyerupai alam asli mereka. Taman ini terkenal dengan konsep "safari" di mana pengunjung dapat menjelajahi area yang dirancang seperti habitat alami hewan-hewan Afrika dan Asia dengan menggunakan kendaraan khusus safari. Selain itu, taman ini juga memiliki pertunjukan satwa, atraksi air, dan berbagai kegiatan interaktif dengan satwa.',
+    dibangun: 'Tahun 2007',
+    luas: '40 hektar',
+    imageAsset: 'images/bali.jpg',
+    imageUrls: [
+      'https://asset.kompas.com/crops/kI2X4KGL6yrnASc040_WP3HUzQs=/0x0:1440x960/750x500/data/photo/2022/05/06/6274fafe22620.jpg',
+
+    ],
+    isFavorite: false,
+  ),
+
 ];
